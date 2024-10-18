@@ -1,0 +1,5 @@
+class Res {
+  //images
+
+  //icons
+}
