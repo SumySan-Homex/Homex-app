@@ -5,6 +5,7 @@ import 'package:homex/core/constants/constants.dart';
 import 'package:homex/core/widgets/custom_background.dart';
 import 'package:homex/core/widgets/spacing.dart';
 import 'package:homex/core/widgets/widget.dart';
+import 'package:homex/features/auth/presentation/pages/login.dart';
 
 class Onboard extends StatefulWidget {
   const Onboard({super.key});
@@ -17,73 +18,89 @@ class _OnboardState extends State<Onboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CustomBackground(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                appText.onbText,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 33,
-                  wordSpacing: 1.5,
-                  fontWeight: FontWeight.bold,
+      body: Stack(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: ColoredBox(color: AppColors.primary),
+          ),
+          CustomPaint(
+            // painter: CirclePainter(),
+            painter: OvalPainter(),
+            child: Container(),
+          ),
+          Positioned(
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  appText.onbText,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: AppColors.white,
+                    fontSize: 33,
+                    wordSpacing: 1.5,
+                    letterSpacing: 1.5,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              const Hspacing(height: 60),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     BuildButton(
-              //       onpressed: () {},
-              //       title: 'Login',
-              //     ),
-              //     const Spacer(),
-              //     BuildButton(
-              //       onpressed: () {},
-              //       title: 'Sign Up',
-              //     ),
-              //   ],
-              // ),
-              // const Hspacing(height: 50),
-              Row(
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: MediaQuery.of(context).size.height * 0.2,
+            left: 0,
+            right: 0,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgIcon(iconName: appIcons.faq, onPressed: () {}),
-                  Text(
-                    'F.A.Q',
-                    style: TextStyle(
-                      color: AppColors.white,
-                    ),
+                  BuildButton(
+                    onpressed: () {
+                      goTo(context: context, newScreen: const LoginScreen());
+                    },
+                    title: 'Login',
                   ),
                   const Spacer(),
-                  SvgIcon(iconName: appIcons.contact, onPressed: () {}),
-                  Text(
-                    'Contact Us!!',
-                    style: TextStyle(
-                      color: AppColors.white,
-                    ),
+                  BuildButton(
+                    onpressed: () {},
+                    title: 'Sign Up',
+                    borderColor: AppColors.secondary,
                   ),
                 ],
               ),
-              const Hspacing(height: 10),
-              Row(
-                children: [
-                  SvgIcon(iconName: appIcons.copyR, onPressed: () {}),
-                  Text(
-                    'Copyright@sumysan2023',
-                    style: TextStyle(
-                      color: AppColors.white,
-                    ),
-                  ),
-                ],
-              )
-            ],
+            ),
           ),
-        ),
+          const Positioned(
+              bottom: 20,
+              left: 0,
+              right: 0,
+              child: Padding(
+                padding: EdgeInsets.all(16.0),
+                child: BottomBar(),
+              )),
+          Positioned(
+              right: 0,
+              top: 10,
+              child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.more_vert,
+                    color: Colors.black,
+                  ))),
+          Positioned(
+              left: 0,
+              top: 10,
+              child: Image.asset(
+                appImages.logoS,
+              ))
+        ],
       ),
     );
   }
@@ -92,10 +109,12 @@ class _OnboardState extends State<Onboard> {
 class BuildButton extends StatelessWidget {
   final VoidCallback onpressed;
   final String title;
+  final Color? borderColor;
   const BuildButton({
     super.key,
     required this.onpressed,
     required this.title,
+    this.borderColor,
   });
 
   @override
@@ -109,13 +128,16 @@ class BuildButton extends StatelessWidget {
             backgroundColor: AppColors.secondary,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
-                side: BorderSide(width: 3, color: AppColors.white))),
+                side: BorderSide(
+                  width: 3,
+                  color: borderColor ?? AppColors.white,
+                ))),
         onPressed: onpressed,
         child: Text(
-          'Login',
+          title,
           style: TextStyle(
               fontSize: 25,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
               color: AppColors.white),
         ),
       ),
