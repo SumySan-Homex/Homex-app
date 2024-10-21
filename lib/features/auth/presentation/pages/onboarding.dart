@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:homex/core/constants/app_text.dart';
 import 'package:homex/core/constants/color.dart';
 import 'package:homex/core/constants/constants.dart';
@@ -25,10 +26,12 @@ class _OnboardState extends State<Onboard> {
             width: MediaQuery.of(context).size.width,
             child: ColoredBox(color: AppColors.primary),
           ),
-          CustomPaint(
-            // painter: CirclePainter(),
-            painter: OvalPainter(),
-            child: Container(),
+          Align(
+            alignment: const Alignment(15, -1.5),
+            child: CustomPaint(
+              size: Size(405.w, 377.h),
+              painter: CirclePainter(),
+            ),
           ),
           Positioned(
             top: 0,
@@ -63,7 +66,10 @@ class _OnboardState extends State<Onboard> {
                 children: [
                   BuildButton(
                     onpressed: () {
-                      goTo(context: context, newScreen: const LoginScreen());
+                      goTo(
+                        context: context,
+                        newScreen: const LoginScreen(),
+                      );
                     },
                     title: 'Login',
                   ),
@@ -137,6 +143,7 @@ class BuildButton extends StatelessWidget {
           title,
           style: TextStyle(
               fontSize: 25,
+              fontFamily: 'Raleway',
               fontWeight: FontWeight.w500,
               color: AppColors.white),
         ),

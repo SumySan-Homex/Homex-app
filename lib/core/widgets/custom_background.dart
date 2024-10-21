@@ -21,7 +21,7 @@ class CustomBackground extends StatelessWidget {
         ),
         CustomPaint(
           // painter: CirclePainter(),
-          painter: OvalPainter(),
+          painter: CirclePainter(),
           child: Container(),
         ),
         Positioned(
@@ -96,7 +96,7 @@ class BottomBar extends StatelessWidget {
   final bool showCopyRight;
   const BottomBar({
     super.key,
-    this.showCopyRight = false,
+    this.showCopyRight = true,
   });
 
   @override
@@ -122,44 +122,41 @@ class BottomBar extends StatelessWidget {
             ),
           ],
         ),
-        const Hspacing(height: 15),
-        Row(
-          children: [
-            SvgIcon(iconName: appIcons.copyR, onPressed: () {}),
-            Text(
-              'Copyright@sumysan2023',
-              style: TextStyle(
-                color: AppColors.white,
-              ),
-            ),
-          ],
-        )
+        showCopyRight ? const Hspacing(height: 15) : const SizedBox.shrink(),
+        showCopyRight
+            ? Row(
+                children: [
+                  SvgIcon(iconName: appIcons.copyR, onPressed: () {}),
+                  const Wspacing(width: 5),
+                  Text(
+                    'Copyright@sumysan2023',
+                    style: TextStyle(
+                      color: AppColors.white,
+                    ),
+                  ),
+                ],
+              )
+            : const SizedBox.shrink(),
       ],
     );
   }
 }
 
-class OvalPainter extends CustomPainter {
+class CirclePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    var paint = Paint()
-      ..color = AppColors.secondary
-      ..style = PaintingStyle.fill;
-
-    // Define the rectangle that will bound the oval
-    Rect ovalRect = Rect.fromLTWH(
-      size.width * 0.2, // Adjust horizontal position
-      size.height * 0.1, // Adjust vertical position
-      size.width * 0.8, // Set width of the oval
-      size.height * 0.5, // Set height of the oval
+    canvas.drawOval(
+      Rect.fromCircle(
+        center: Offset(
+          size.width / 2,
+          size.height / 2,
+        ),
+        radius: size.width / 2,
+      ),
+      Paint()..color = Colors.green,
     );
-
-    // Draw the oval
-    canvas.drawOval(ovalRect, paint);
   }
 
   @override
-  bool shouldRepaint(CustomPainter oldDelegate) {
-    return false;
-  }
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
