@@ -24,69 +24,6 @@ class CustomBackground extends StatelessWidget {
           painter: CirclePainter(),
           child: Container(),
         ),
-        Positioned(
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                appText.onbText,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.white,
-                  fontSize: 33,
-                  wordSpacing: 1.5,
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          bottom: MediaQuery.of(context).size.height * 0.2,
-          left: 0,
-          right: 0,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                BuildButton(
-                  onpressed: () {},
-                  title: 'Login',
-                ),
-                const Spacer(),
-                BuildButton(
-                  onpressed: () {},
-                  title: 'Sign Up',
-                  borderColor: AppColors.secondary,
-                ),
-              ],
-            ),
-          ),
-        ),
-        const Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
-            child: Padding(
-              padding: EdgeInsets.all(16.0),
-              child: BottomBar(),
-            )),
-        Positioned(
-            right: 0,
-            top: 10,
-            child: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.more_vert,
-                  color: Colors.black,
-                ))),
-        child,
       ],
     );
   }
@@ -151,7 +88,7 @@ class CirclePainter extends CustomPainter {
           size.width / 2,
           size.height / 2,
         ),
-        radius: size.width / 2,
+        radius: size.width / 1.5,
       ),
       Paint()..color = Colors.green,
     );

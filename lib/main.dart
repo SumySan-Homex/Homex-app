@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:homex/config/dependency_injection/service_locator.dart';
+import 'package:homex/features/app/presentation/pages/home_nav.dart';
+import 'package:homex/features/app/presentation/pages/message/message.dart';
+import 'package:homex/features/auth/presentation/sm/auth_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'features/auth/presentation/pages/onboarding.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  Di.setUpLocator();
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => AuthProvider())],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -26,7 +34,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const Onboard(),
+          home: const HomeNav(),
         );
       },
     );

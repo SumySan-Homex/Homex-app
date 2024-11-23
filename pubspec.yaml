@@ -38,6 +38,12 @@ dependencies:
   flutter_screenutil: ^5.9.3
   another_flushbar: ^1.12.30
   flutter_svg: ^2.0.10+1
+  google_fonts: ^6.2.1
+  provider: ^6.1.2
+  dio: ^5.7.0
+  get_it: ^8.0.2
+  flutter_secure_storage: ^9.2.2
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
@@ -66,6 +72,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/fonts/
+    - assets/icons/bottom_nav/
 
 
   fonts:
