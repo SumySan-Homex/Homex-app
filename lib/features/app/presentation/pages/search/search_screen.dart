@@ -20,13 +20,13 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.primary,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
         children: [
           SizedBox(
-            height: 287.h,
-            width: double.infinity,
+            height: 300.h,
+            width: MediaQuery.of(context).size.width,
             child: Stack(
+              fit: StackFit.expand,
               children: [
                 Image.asset(
                   appImages.house1,
@@ -35,8 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 Column(
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsets.only(top: 20, left: 20, right: 20),
+                      padding: EdgeInsets.only(top: 20.h, left: 20, right: 20),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -54,9 +53,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                 'Homex',
                                 style: GoogleFonts.crimsonText(
                                   fontSize: 30.0,
-                                  fontWeight:
-                                      FontWeight.w700, // Adjust the weight
-                                  color: Colors.white, // Adjust the color
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
                                 ),
                               ),
                             ],
@@ -78,92 +76,102 @@ class _SearchScreenState extends State<SearchScreen> {
                         color: Colors.white, // Adjust the color
                       ),
                     ),
-                    CustomTextField(),
+                    // CustomTextField(),
                   ],
                 )
               ],
             ),
           ),
           const Hspacing(height: 10),
-          Text(
-            'New to Market',
-            style: GoogleFonts.crimsonText(
-              fontWeight: FontWeight.w600,
-              height: 25.sp,
-              color: Colors.white,
+          Padding(
+            padding: EdgeInsets.only(
+              left: 16.r,
+              right: 16.r,
             ),
-          ),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    '70,000',
-                    style: GoogleFonts.crimsonText(
-                      fontWeight: FontWeight.w700,
-                      height: 22.sp,
-                      color: Colors.white,
-                    ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'New to Market',
+                  style: GoogleFonts.crimsonText(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 25.sp,
+                    color: Colors.white,
                   ),
-                  const Text(
-                    '6 hours ago',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  )
-                ],
-              ),
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: const BoxDecoration(
-                  color: Colors.black,
                 ),
-                child: Column(
+                Column(
                   children: [
-                    SizedBox(
-                      height: 174.h,
-                      width: double.infinity,
-                      child: Image.asset(
-                        appImages.house1,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 7.h,
-                              width: 7.w,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                shape: BoxShape.circle,
-                              ),
-                            ),
-                            Text(
-                              'Beds',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w300,
-                                  fontSize: 20.sp),
-                            )
-                          ],
+                        Text(
+                          '\$70,000',
+                          style: GoogleFonts.crimsonText(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 22.sp,
+                            color: Colors.white,
+                          ),
                         ),
-                        const Wspacing(
-                          width: 20,
-                        ),
-                        const Spacer(),
-                        SvgIcon(
-                          iconName: appIcons.heart,
-                          onPressed: () {},
-                        ),
+                        const Text(
+                          '6 hours ago',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        )
                       ],
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: const BoxDecoration(
+                        color: Colors.black,
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 174.h,
+                            width: double.infinity,
+                            child: Image.asset(
+                              appImages.house1,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Row(
+                                children: [
+                                  Container(
+                                    height: 7.h,
+                                    width: 7.w,
+                                    decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      shape: BoxShape.circle,
+                                    ),
+                                  ),
+                                  Text(
+                                    ' 3 Beds',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w300,
+                                        fontSize: 20.sp),
+                                  )
+                                ],
+                              ),
+                              const Wspacing(
+                                width: 20,
+                              ),
+                              SvgIcon(
+                                iconName: appIcons.heart,
+                                onPressed: () {},
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
                     )
                   ],
                 ),
-              )
-            ],
+              ],
+            ),
           ),
         ],
       ),
@@ -172,6 +180,8 @@ class _SearchScreenState extends State<SearchScreen> {
 }
 
 class CustomTextField extends StatelessWidget {
+  const CustomTextField({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -184,7 +194,7 @@ class CustomTextField extends StatelessWidget {
           hintStyle: const TextStyle(color: Colors.grey),
           prefixIcon: Container(
             padding: const EdgeInsets.all(12.0),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               // color: Colors.grey[100],
             ),
@@ -214,10 +224,4 @@ class CustomTextField extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: CustomTextField(),
-  ));
 }

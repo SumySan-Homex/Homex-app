@@ -40,11 +40,28 @@ class _AccountSettingsState extends State<AccountSettings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        leading: Icon(
+          Icons.arrow_back,
+          color: AppColors.cB4DFA1,
+        ),
+        centerTitle: true,
+        title: Text(
+          'Account settings',
+          style: TextStyle(
+            color: AppColors.cB4DFA1,
+            fontWeight: FontWeight.w500,
+            fontSize: 30.sp,
+          ),
+        ),
+      ),
       backgroundColor: AppColors.primary,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
+            const Hspacing(height: 15),
             Row(
               children: [
                 Container(

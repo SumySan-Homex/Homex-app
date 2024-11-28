@@ -6,17 +6,17 @@ import 'package:homex/core/constants/constants.dart';
 import 'package:homex/core/widgets/custom_background.dart';
 import 'package:homex/core/widgets/spacing.dart';
 import 'package:homex/core/widgets/widget.dart';
+import 'package:homex/features/app/presentation/pages/profile/account_settings.dart';
 import 'package:homex/features/auth/presentation/pages/login.dart';
-import 'package:homex/features/auth/presentation/pages/register.dart';
 
-class Onboard extends StatefulWidget {
-  const Onboard({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<Onboard> createState() => _OnboardState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _OnboardState extends State<Onboard> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +43,7 @@ class _OnboardState extends State<Onboard> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  appText.onbText,
+                  'Create an account\nto get started', // Changed text for registration
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: AppColors.white,
@@ -72,17 +72,12 @@ class _OnboardState extends State<Onboard> {
                         newScreen: const LoginScreen(),
                       );
                     },
-                    title: 'Login',
+                    title: 'Email',
                   ),
                   const Spacer(),
                   BuildButton(
-                    onpressed: () {
-                      goTo(
-                        context: context,
-                        newScreen: const Register(),
-                      );
-                    },
-                    title: 'Sign Up',
+                    onpressed: () {},
+                    title: 'Google',
                     borderColor: AppColors.secondary,
                   ),
                 ],
@@ -113,46 +108,6 @@ class _OnboardState extends State<Onboard> {
                 appImages.logoS,
               ))
         ],
-      ),
-    );
-  }
-}
-
-class BuildButton extends StatelessWidget {
-  final VoidCallback onpressed;
-  final String title;
-  final Color? borderColor;
-  const BuildButton({
-    super.key,
-    required this.onpressed,
-    required this.title,
-    this.borderColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      width: 160,
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.zero,
-            backgroundColor: AppColors.secondary,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-                side: BorderSide(
-                  width: 3,
-                  color: borderColor ?? AppColors.white,
-                ))),
-        onPressed: onpressed,
-        child: Text(
-          title,
-          style: TextStyle(
-              fontSize: 25,
-              fontFamily: 'Raleway',
-              fontWeight: FontWeight.w500,
-              color: AppColors.white),
-        ),
       ),
     );
   }

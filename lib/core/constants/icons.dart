@@ -15,4 +15,11 @@ class AppIcon {
   //chat screen
   String get backIcon => '${path}back_icon.svg';
   String get call => '${path}call.svg';
+  String get logo => '${path}logo_wi.svg';
+
+  //prop info page
+  String get heart2 => '${path}heart2.svg';
+  String get more => '${path}more.svg';
+  String get note => '${path}note.svg';
+  String get share => '${path}share.svg';
 }
