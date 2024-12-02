@@ -5,6 +5,7 @@ import 'package:homex/features/app/presentation/pages/profile/account_settings.d
 import 'package:homex/features/auth/presentation/pages/login.dart';
 
 import 'bottom_nav.dart';
+import 'search/search2.dart';
 import 'search/search_screen.dart';
 
 class HomeNav extends StatefulWidget {
@@ -32,7 +33,7 @@ class _HomeNavState extends State<HomeNav> {
     const Message(),
     const LoginScreen(),
     const AccountSettings(),
-    const PropInfoPage(),
+    const Search2Screen(),
   ];
 
   @override

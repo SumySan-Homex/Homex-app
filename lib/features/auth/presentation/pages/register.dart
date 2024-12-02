@@ -6,8 +6,8 @@ import 'package:homex/core/constants/constants.dart';
 import 'package:homex/core/widgets/custom_background.dart';
 import 'package:homex/core/widgets/spacing.dart';
 import 'package:homex/core/widgets/widget.dart';
-import 'package:homex/features/app/presentation/pages/profile/account_settings.dart';
 import 'package:homex/features/auth/presentation/pages/login.dart';
+import 'package:homex/features/auth/presentation/pages/onboarding.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});

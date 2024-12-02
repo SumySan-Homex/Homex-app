@@ -22,4 +22,21 @@ class AppIcon {
   String get more => '${path}more.svg';
   String get note => '${path}note.svg';
   String get share => '${path}share.svg';
+
+  //search property pa
+  String get all => '${path}all.svg';
+  String get apartment => '${path}apartment.svg';
+  String get building => '${path}building.svg';
+  String get shortlet => '${path}shortlet.svg';
+  String get house => '${path}house.svg';
+  String get land => '${path}land.svg';
+  String get office => '${path}office.svg';
+  String get condo => '${path}condo.svg';
+  String get timeline => '${path}timeline.svg';
+  String get shared => '${path}shared.svg';
+  String get filter => '${path}filter.svg';
+  String get searchFilter => '${path}search_filter.svg';
+
+  String get gps => '${path}gps.svg';
+  String get locate => '${path}locate.svg';
 }
